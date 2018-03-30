@@ -27,7 +27,7 @@ class WWDC_Start: GKState {
                                             self.scene.childNode(withName: "Apple")!.physicsBody?.isDynamic = true
                                             self.scene.childNode(withName: "Apple")!.physicsBody!.applyForce(
                                                 CGVector(dx:-7,dy:0))
-                                            self.scene.WWDC_State.enter(Fall_State)
+                                            self.scene.WWDC_State.enter(Fall_State.self)
                     })
                     self.scene.Apple_Ghost.run(FadeIn,
                                                completion:{

@@ -30,7 +30,7 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
     
     let cameraNode = SKCameraNode()
     var right = true
-    let cameraMoveSpeed : CGPoint = CGPoint(x:0,y:105)
+    let cameraMoveSpeed : CGPoint = CGPoint(x:0,y:90)
     var time : TimeInterval = 0
     var LastUpdate : TimeInterval = 0
     
@@ -83,12 +83,12 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    func handleTap(sender : UITapGestureRecognizer){
+    @objc func handleTap(sender : UITapGestureRecognizer){
         let viewlocation = sender.location(in: self.view)
         let touchlocation = convertPoint(fromView: viewlocation)
         if let tap_object = atPoint(touchlocation) as? SKSpriteNode{
             if tap_object.name == "Apple"{
-                WWDC_State.enter(WWDC_Start)
+                WWDC_State.enter(WWDC_Start.self)
                 view?.removeGestureRecognizer(sender)
             }
         }
@@ -96,7 +96,7 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func handleRotate(sender:RotationGestureRecognizer){
+    @objc func handleRotate(sender:RotationGestureRecognizer){
         if sender.state == UIGestureRecognizerState.began{
             if sender.ClockWise == 1{
                 let rotation = SKAction.rotate(byAngle: 0.75*π+2*π, duration: 2.5)
@@ -112,7 +112,7 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func handleSwipe(sender: UISwipeGestureRecognizer){
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer){
         if Apple.physicsBody?.isDynamic == false {
             var Up_texture: [SKTexture] = []
             var Down_texture: [SKTexture] = []
@@ -156,7 +156,7 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
                                                                              completion:{
                                                                                 self.Apple.physicsBody?.isDynamic = true
                                                                            self.WWDC_2013_Middle.removeFromParent()
-                                                                           self.WWDC_State.enter(Fall_State)
+                                                                           self.WWDC_State.enter(Fall_State.self)
                                                         })
                                                         
                                 })
@@ -167,7 +167,7 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
             print ("Error")}
     }
     
-    func handleTap_Twice(sender: UITapGestureRecognizer){
+    @objc func handleTap_Twice(sender: UITapGestureRecognizer){
         let viewlocation = sender.location(in: self.view)
         let touchlocation = convertPoint(fromView: viewlocation)
         if let tap_object = atPoint(touchlocation) as? SKSpriteNode{
@@ -484,36 +484,36 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
         case is Fall_State:
             if (firstBody.categoryBitMask & PhysicsCategory.Apple != 0) {
                 if (secondBody.categoryBitMask & PhysicsCategory.Barrier1 != 0){
-                    self.WWDC_State.enter(WWDC_13)
+                    self.WWDC_State.enter(WWDC_13.self)
                     print ("WWDC_13_State")
                 }
                 else if secondBody.categoryBitMask & PhysicsCategory.Barrier2 != 0{
-                    self.WWDC_State.enter(WWDC_14_1)
+                    self.WWDC_State.enter(WWDC_14_1.self)
                     print ("WWDC_14_State")
                     
                 }
                 else if secondBody.categoryBitMask & PhysicsCategory.Barrier3 != 0{
-                    self.WWDC_State.enter(WWDC_15)
+                    self.WWDC_State.enter(WWDC_15.self)
                     print ("WWDC_15_State")
                 }
                 else if secondBody.categoryBitMask & PhysicsCategory.Barrier4 != 0{
-                    self.WWDC_State.enter(WWDC_16)
+                    self.WWDC_State.enter(WWDC_16.self)
                     print ("WWDC_16_State")
                 }
             }
             if (firstBody.categoryBitMask & PhysicsCategory.Main_Role != 0){
                 if (secondBody.categoryBitMask & PhysicsCategory.Barrier4 != 0){
-                    self.WWDC_State.enter(WWDC_17)
+                    self.WWDC_State.enter(WWDC_17.self)
                     print ("WWDC_17_State")
                 }
             }
         case is WWDC_14_1:
             if (firstBody.categoryBitMask & PhysicsCategory.Leaf != 0)&&(secondBody.categoryBitMask & PhysicsCategory.Barrier2 != 0) {
-                self.WWDC_State.enter(WWDC_14_2)
+                self.WWDC_State.enter(WWDC_14_2.self)
             }
             if (firstBody.categoryBitMask & PhysicsCategory.Apple != 0)&&(secondBody.categoryBitMask & PhysicsCategory.Leaf != 0){
                 if WWDC_2014_Leaf.physicsBody?.affectedByGravity == true{
-                    WWDC_State.enter(WWDC_14_2)
+                    WWDC_State.enter(WWDC_14_2.self)
                 }
             }
         default:
@@ -551,7 +551,7 @@ class Start_Scene: SKScene, SKPhysicsContactDelegate {
                                                                 completion:{
                                                                     self.WWDC_2016_Apple.physicsBody?.isDynamic = true
                                                                     
-                                                                    self.WWDC_State.enter(Fall_State)
+                                                                    self.WWDC_State.enter(Fall_State.self)
                                         })
                                         
                     })

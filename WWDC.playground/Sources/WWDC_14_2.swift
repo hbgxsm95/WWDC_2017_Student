@@ -51,7 +51,7 @@ class WWDC_14_2: GKState {
             self.scene.Apple.physicsBody?.isDynamic = false
             self.scene.WWDC_2014_Barrier.removeFromParent()
             self.scene.Apple.physicsBody?.isDynamic = true
-            self.scene.WWDC_State.enter(Fall_State)
+            self.scene.WWDC_State.enter(Fall_State.self)
             judge = false
         }
     }

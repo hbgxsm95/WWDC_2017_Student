@@ -39,7 +39,7 @@ class WWDC_15: GKState {
         }
         if self.scene.Apple.position.y <= -830{
             
-            scene.WWDC_State.enter(Fall_State)
+            scene.WWDC_State.enter(Fall_State.self)
         }
         else {
             //print ("\(self.scene.Apple.position.y)")

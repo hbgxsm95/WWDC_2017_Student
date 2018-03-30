@@ -20,7 +20,6 @@ class GameScene: SKScene {
     let label_3 = SKLabelNode(fontNamed: "Chalkduster")
     public override init(size: CGSize) {
         super.init(size: size)
-        
     }
     
     // 6
@@ -86,7 +85,6 @@ class GameScene: SKScene {
         let touchlocation = convertPoint(fromView: viewlocation)
         var judge : Bool = true
         if let tap_object = atPoint(touchlocation) as? Pipe{
-            
             if tap_object.tag == 15 || tap_object.tag == 16{
                 judge = false
                 print ("Error. Cannot rotate the first or last")
@@ -102,7 +100,6 @@ class GameScene: SKScene {
                         tap_object.tail = tap_object.position + CGPoint (x:0,y:18)
                         tap_object.head = tap_object.position + CGPoint (x:-18,y:0)
                     case 1:
-                        
                         tap_object.tail = tap_object.position + CGPoint (x:-18,y:0)
                         tap_object.head = tap_object.position + CGPoint (x:0,y:-18)
                     case 2:
@@ -111,7 +108,6 @@ class GameScene: SKScene {
                     default:
                         tap_object.tail = tap_object.position + CGPoint(x:18,y:0)
                         tap_object.head = tap_object.position + CGPoint(x:0,y:18)
-                        
                         
                     }
                     
@@ -125,7 +121,6 @@ class GameScene: SKScene {
                     default:
                         tap_object.tail = tap_object.position + CGPoint(x:0,y:18)
                         tap_object.head = tap_object.position + CGPoint(x:0,y:-18)
-                        
                         
                     }
                     
