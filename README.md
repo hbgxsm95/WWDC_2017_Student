@@ -1,5 +1,5 @@
 # WWDC 2017 Student
-###Feature & Tech
+### Feature & Tech
 
 My Swift Playground focuses on the theme that Technology alone is not enough by designing seven visually interactive scenes with the help of both algorithms and deep observation on the five-year WWDC posters. On the whole, the creativity of the design comes from the deep look into the art characteristic of WWDC posters in each year. Taking the WWDC in 2013 for example, when you swipe up or down , the Apple will reflect on the other side as the poster close and open like a fan, which shows the beautiful symmetry of itself. Moreover, when you draw a clockwise arc in the 2015 page, the poster will rotate clockwise, and vise versa. It is worth mentioning that the logo of Apple Inc. stands out through the perfect combination of black, white and other colors, and the movement of camera smoothes the transition between the pages. 
 
